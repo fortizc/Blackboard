@@ -11,6 +11,11 @@ class mainwin(Gtk.Window):
         self.connect('destroy', Gtk.main_quit)
 
         self.__add_scrolled_win()
+        self.__add_txt_view()
+
+    def __add_txt_view(self):
+        self.txt_view = Gtk.TextView()
+        self.scroll.add(self.txt_view)
 
     def __add_scrolled_win(self):
         self.scroll = Gtk.ScrolledWindow()
