@@ -10,7 +10,13 @@ class mainwin(Gtk.Window):
         self.set_default_size(600, 400)
         self.connect('destroy', Gtk.main_quit)
 
+        self.__add_scrolled_win()
 
+    def __add_scrolled_win(self):
+        self.scroll = Gtk.ScrolledWindow()
+        self.scroll.set_hexpand(True)
+        self.scroll.set_vexpand(True)
+        self.add(self.scroll)
 
 
 win = mainwin()
