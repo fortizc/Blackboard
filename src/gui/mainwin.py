@@ -33,7 +33,7 @@ class mainwin(Gtk.Window):
 
     def __add_paned(self):
         paned = Gtk.HPaned()
-        paned.add1(self.txt_form)
+        paned.add1(self.txt_op)
         paned.add2(self.txt_result)
         self.scroll.add(paned)
         w = self.get_size().width
