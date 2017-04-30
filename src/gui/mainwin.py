@@ -12,6 +12,7 @@ class mainwin(Gtk.Window):
 
         self.__add_scrolled_win()
         self.__add_txt_view()
+        self.__add_paned()
         self.__add_header_bar()
 
     def __create_header_btn(self, icon_name):
@@ -30,9 +31,17 @@ class mainwin(Gtk.Window):
         header.pack_end(self.btn_set)
         header.pack_start(self.btn_add)
 
+    def __add_paned(self):
+        paned = Gtk.HPaned()
+        paned.add1(self.txt_form)
+        paned.add2(self.txt_result)
+        self.scroll.add(paned)
+        w = self.get_size().width
+        paned.set_position(w - w / 3)
+
     def __add_txt_view(self):
-        self.txt_view = Gtk.TextView()
-        self.scroll.add(self.txt_view)
+        self.txt_op = Gtk.TextView()
+        self.txt_result = Gtk.TextView()
 
     def __add_scrolled_win(self):
         self.scroll = Gtk.ScrolledWindow()
