@@ -1,7 +1,7 @@
 import gi
-from gi.repository import Gtk, Gio
-
 gi.require_version('Gtk', '3.0')
+
+from gi.repository import Gtk, Gio
 
 
 class mainwin(Gtk.Window):
