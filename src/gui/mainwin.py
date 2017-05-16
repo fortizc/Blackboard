@@ -14,6 +14,7 @@ class mainwin(Gtk.Window):
         self.__add_txt_view()
         self.__add_paned()
         self.__add_header_bar()
+        self.txt_op.grab_focus()
 
     def __create_header_btn(self, icon_name):
         icon = Gio.ThemedIcon(name=icon_name)
