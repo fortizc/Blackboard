@@ -48,8 +48,3 @@ class mainwin(Gtk.Window):
         self.scroll.set_hexpand(True)
         self.scroll.set_vexpand(True)
         self.add(self.scroll)
-
-
-win = mainwin()
-win.show_all()
-Gtk.main()
