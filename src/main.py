@@ -1,4 +1,4 @@
-from gui.mainwin import mainwin
+from .gui.mainwin import mainwin
 import gi
 
 gi.require_version('Gtk', '3.0')
