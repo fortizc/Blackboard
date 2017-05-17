@@ -9,8 +9,14 @@ class result_pane(Gtk.Box):
         Gtk.Box.__init__(self)
         self.orientation = Gtk.Orientation.VERTICAL
         self.spacing = 0
-        self.init_lb_list()
+        self.__init_lb_list()
 
+    def __init_lb_list(self):
+        lb = Gtk.Label(str(0))
+        self.lb_list = []
+        self.lb_list.append(lb)
+        self.add(lb)
+        lb.show()
 
     def add_label(self, txt_op, value):
         if Gdk.keyval_name(value.keyval) == 'Return':
