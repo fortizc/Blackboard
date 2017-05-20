@@ -45,7 +45,7 @@ class mainwin(Gtk.Window):
         self.txt_op = Gtk.TextView()
         self.result_pane = result_pane()
         self.txt_op.connect("key-press-event",
-                            self.result_pane.add_label)
+                            self.result_pane.capture_pressed_key)
 
     def __add_scrolled_win(self):
         self.scroll = Gtk.ScrolledWindow()
