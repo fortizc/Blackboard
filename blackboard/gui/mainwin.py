@@ -6,7 +6,7 @@ from gi.repository import Gtk, Gio  # noqa
 
 class mainwin(Gtk.Window):
     def __init__(self):
-        Gtk.Window.__init__(self)
+        super().__init__()
         self.set_default_size(600, 400)
         self.connect('destroy', Gtk.main_quit)
 
