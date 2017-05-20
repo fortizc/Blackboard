@@ -21,7 +21,7 @@ class result_pane(Gtk.Grid):
             x = txt_op.get_cursor_locations()
             height = x.strong.height
             pos = x.strong.y + height
-            index = pos / height
+            index = int(pos / height)
             lb = Gtk.Label(str(index))
             self.lb_list.insert(index, lb)
             if (len(self.lb_list) - 1) > index:
