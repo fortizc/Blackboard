@@ -21,7 +21,7 @@ class result_pane(Gtk.Grid):
     def __get_cursor_position(self, txt_op):
         x = txt_op.get_cursor_locations()
         height = x.strong.height
-        pos = x.strong.y + height
+        pos = x.strong.y
         index = int(pos / height)
         return index
 
