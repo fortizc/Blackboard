@@ -11,7 +11,7 @@ class result_pane(Gtk.Grid):
         self.__add_label_at(0)
 
     def __add_label_at(self, index):
-        lb = Gtk.Label(str(index))
+        lb = Gtk.Label()
         self.lb_list.insert(index, lb)
         if (len(self.lb_list) - 1) > index:
             self.insert_row(index)
