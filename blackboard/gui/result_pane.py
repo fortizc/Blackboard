@@ -6,7 +6,7 @@ from gi.repository import Gtk, Gio, Gdk  # noqa
 
 class result_pane(Gtk.Grid):
     def __init__(self):
-        Gtk.Grid.__init__(self)
+        super().__init__()
         self.lb_list = []
         self.__add_label_at(0)
 
