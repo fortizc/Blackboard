@@ -35,3 +35,10 @@ class result_pane(Gtk.Grid):
             return
         index = self.__get_cursor_position(txt_op)
         self.__add_label_at(index + 1)
+
+    def update_label(self, index, result):
+        try:
+            self.lb_list[index].set_label(str(result))
+            self.lb_list[index].show()
+        except IndexError:
+            print('Label list index out of range')
