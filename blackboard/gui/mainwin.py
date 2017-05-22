@@ -18,11 +18,8 @@ class mainwin(Gtk.Window):
         self.txt_op.grab_focus()
 
     def __get_cursor_position(self):
-        x = self.txt_op.get_cursor_locations()
-        height = x.strong.height
-        pos = x.strong.y
-        index = int(pos / height)
-        return index
+        strong = self.txt_op.get_cursor_locations().strong
+        return int(strong.y / strong.height)
 
     def add_label_at_cursor(self, txt_op, value):
         key = Gdk.keyval_name(value.keyval)
