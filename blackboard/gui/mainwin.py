@@ -1,3 +1,4 @@
+from .result_pane import result_pane
 import gi
 gi.require_version('Gtk', '3.0')
 
@@ -35,14 +36,16 @@ class mainwin(Gtk.Window):
     def __add_paned(self):
         paned = Gtk.HPaned()
         paned.add1(self.txt_op)
-        paned.add2(self.txt_result)
+        paned.add2(self.result_pane)
         self.scroll.add(paned)
         w = self.get_size().width
         paned.set_position(w - w / 3)
 
     def __add_txt_view(self):
         self.txt_op = Gtk.TextView()
-        self.txt_result = Gtk.TextView()
+        self.result_pane = result_pane()
+        self.txt_op.connect("key-press-event",
+                            self.result_pane.add_label_at_cursor)
 
     def __add_scrolled_win(self):
         self.scroll = Gtk.ScrolledWindow()
