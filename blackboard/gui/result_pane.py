@@ -25,12 +25,8 @@ class result_pane(Gtk.Grid):
         index = int(pos / height)
         return index
 
-    def __get_pressed_key(self, value):
-        key = Gdk.keyval_name(value.keyval)
-        return key
-
     def add_label_at_cursor(self, txt_op, value):
-        key = self.__get_pressed_key(value)
+        key = Gdk.keyval_name(value.keyval)
         if key != 'Return':
             return
         index = self.__get_cursor_position(txt_op)
