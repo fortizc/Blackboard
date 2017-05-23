@@ -16,7 +16,6 @@ class result_pane(Gtk.Grid):
         if (len(self.lb_list) - 1) > index:
             self.insert_row(index)
         self.attach(lb, 0, index, 1, 1)
-        lb.set_label(str(index))
         lb.show()
 
     def update_label(self, index, result):
