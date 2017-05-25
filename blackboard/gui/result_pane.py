@@ -23,4 +23,4 @@ class result_pane(Gtk.Grid):
             self.lb_list[index].set_label(str(result))
             self.lb_list[index].show()
         except IndexError:
-            print('Label list index out of range')
+            raise LookupError("Label index is out of range")
