@@ -58,6 +58,13 @@ class mainwin(Gtk.Window):
         self.txt_op.connect("key-press-event",
                             self.add_label_at_cursor)
 
+        self.__txt_buff = self.txt_op.get_buffer()
+        self.__txt_buff.connect("mark-set", self.__move_scroll)
+
+    def __move_scroll(self, buff, location, mark):
+        height = self.txt_op.get_cursor_locations().strong.height
+        self.scroll.get_vadjustment().set_value(buff.props.cursor_position * height)
+
     def __add_scrolled_win(self):
         self.scroll = Gtk.ScrolledWindow()
         self.scroll.set_hexpand(True)
