@@ -64,10 +64,15 @@ class mainwin(Gtk.Window):
 
     def __move_scroll(self, *args):
         adj = self.scroll.get_vadjustment()
-        view_start = adj.get_value()
-        view_end = view_start + adj.get_page_size()
         cursor_height = self.txt_op.get_cursor_locations().strong.height
         cursor_pos = self.txt_op.get_cursor_locations().strong.y
+        view_start = adj.get_value()
+        # The view_end is the last cursor position that it can be shown
+        # in the view before the scroll position has to be updated, so we
+        # have to consider the cursor height and the view size in order
+        # to avoid the cursor lost.
+        mod = adj.get_page_size() % cursor_height
+        view_end = view_start + adj.get_page_size() - mod
         if cursor_pos >= view_start and cursor_pos < view_end:
             return
         if cursor_pos >= view_end:
