@@ -1,0 +1,52 @@
+import os
+import importlib.util as imp
+
+
+class _plugin_loader:
+    def __init__(self):
+        here = os.path.abspath(os.path.dirname(__file__))
+        self.__core_path = "{here}/core_plugins".format(here=here)
+        try:
+            self.__user_path = os.environ["BLACKBOARD_PLUGIN_DIR"]
+        except KeyError:
+            self.__user_path = None
+
+        self.__plugins = {}
+        self.__load_plugins(self.__core_path)
+        self.__load_plugins(self.__user_path)
+
+    def get_plugin(self, identifier):
+        return self.__plugins.get(identifier, None)
+
+    def __load_plugins(self, path):
+        if not path:
+            return
+
+        for f in os.listdir(path):
+            if os.path.splitext(f)[-1] != ".py" or f == "__init__.py":
+                continue
+            plg = self.__load_plugin_from_file(os.path.join(path, f))
+            if not plg:
+                continue
+
+            print (plg)
+
+            if not plg.name:
+                print ("Error, no name set, cannot be loaded")
+                continue
+
+            self.__plugins[plg.name] = plg
+
+            if not plg.keywords:
+                print ("Error, no keywords found, cannot be loaded")
+                del self.__plugins[plg.name]
+                continue
+
+            for kw in plg.keywords:
+                self.__plugins[kw] = plg
+
+    def __load_plugin_from_file(self, path):
+        spec = imp.spec_from_file_location("loaded_module", path)
+        module = imp.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module.plugin
