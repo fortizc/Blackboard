@@ -11,6 +11,7 @@ LOWEST_PRIORITY = 9
 
 
 class plugin_base:
+class plugin_description:
     def __init__(self,
                  name,
                  keywords,
