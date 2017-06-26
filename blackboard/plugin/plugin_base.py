@@ -11,6 +11,12 @@ LOWEST_PRIORITY = 9
 
 
 class plugin_base:
+    def run(self):
+        err = "Error, this is an abstract method " \
+              "you need implement this in a derived class"
+        raise NotImplementedError(err)
+
+
 class plugin_description:
     def __init__(self,
                  name,
