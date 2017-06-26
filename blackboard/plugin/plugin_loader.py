@@ -29,8 +29,6 @@ class _plugin_loader:
             if not plg:
                 continue
 
-            print (plg)
-
             if not plg.name:
                 print ("Error, no name set, cannot be loaded")
                 continue
