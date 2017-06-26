@@ -1,5 +1,6 @@
 import os
 import importlib.util as imp
+from .plugin_base import plugin_base
 
 
 class _plugin_loader:
@@ -47,4 +48,8 @@ class _plugin_loader:
         spec = imp.spec_from_file_location("loaded_module", path)
         module = imp.module_from_spec(spec)
         spec.loader.exec_module(module)
+
+        if not issubclass(module.plugin.instance, plugin_base):
+            return None
+
         return module.plugin
