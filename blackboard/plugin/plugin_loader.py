@@ -15,7 +15,7 @@ class _plugin_loader:
         self.__plugins = {}
         self.__load_plugins(self.__core_path)
         self.__load_plugins(self.__user_path)
-        self.__kwords = self.__plugins.keys()
+        self.__kwords = list(self.__plugins.keys())
 
     def get_plugin(self, identifier):
         return self.__plugins.get(identifier, None)
